@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Home from "./components/Home";
 import ErrorPage from "./components/ErrorPage";
 import SignUp from "./authentication/SignUp";
@@ -7,8 +8,8 @@ import ForgotPassword from "./authentication/ForgotPassword";
 import UserDetails from "./authentication/UserDetails";
 import UserHome from "./authentication/UserHome";
 import AdminSignUp from "./admin/AdminSignUp";
-import { useEffect, useState } from "react";
 import AdminPanel from "./admin/AdminPanel";
+import ViewUser from "./admin/ViewUser";
 
 function App() {
   const isLoggedIn = window.localStorage.getItem("loggedIn");
@@ -38,6 +39,7 @@ function App() {
           ) : (
             <Route path="/adminPanel" element={<ErrorPage />} />
           )}
+          <Route path="/viewUser" element={<ViewUser />} />
         </Routes>
       </main>
     </Router>

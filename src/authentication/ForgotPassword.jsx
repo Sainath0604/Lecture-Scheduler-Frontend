@@ -10,7 +10,6 @@ function ForgotPassword() {
 
   function resetPassword(e) {
     e.preventDefault();
-    console.log("Forgot password");
     fetch(forgotPassUrl, {
       method: "POST",
       crossDomain: true,
