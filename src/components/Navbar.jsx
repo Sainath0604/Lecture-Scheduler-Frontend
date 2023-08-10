@@ -3,10 +3,7 @@ import { Disclosure } from "@headlessui/react";
 import Theme from "./Theme";
 import { CrossIcon, HamburgerIcon, UserIcon } from "../Icons/Icons";
 
-const navigation = [
-  { name: "Dashboard", to: "/" },
-  { name: "Shop", to: "#" },
-];
+const navigation = [{ name: "Courses", to: "/" }];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -42,7 +39,7 @@ function Navbar() {
                   <div className="flex flex-shrink-0 items-center ">
                     <Link to="/">
                       <span className="font-bold text-3xl text-indigo-600 dark:text-indigo-800">
-                        HEY
+                        Test
                       </span>
                     </Link>
                   </div>
@@ -69,7 +66,7 @@ function Navbar() {
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <Link to="/signIn">
+                  <Link to="/SignIn">
                     <button
                       type="button"
                       className="rounded-full dark:bg-gray-200 p-1 text-gray-400 dark:text-[#241B35] hover:text-white "

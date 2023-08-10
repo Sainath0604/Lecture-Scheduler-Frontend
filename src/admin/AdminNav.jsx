@@ -4,12 +4,10 @@ import { Disclosure } from "@headlessui/react";
 import {
   AdminIcon,
   CrossIcon,
-  DatabaseIcon,
   EyeIcon,
   HamburgerIcon,
   LogOutIcon,
-  UploadIcon,
-} from "../components/Icons";
+} from "../Icons/Icons";
 
 function AdminNav() {
   const navigate = useNavigate();
@@ -32,52 +30,57 @@ function AdminNav() {
 
   return (
     <>
-      <div className="hidden md:block h-screen w-1/5  bg-[#241B35] ">
-        <div className="flex flex-col text-white ">
-          <div className="flex flex-col justify-between items-center border-b border-gray-500 h-[19vh] p-4 text-3xl">
-            <div className="">
-              <Link to="/">
-                <img className="w-28" src="" alt="Logo" />
-              </Link>
-            </div>
-            <div className="font-bold pb-4 cursor-pointer">
-              <Link to="/signIn">Admin Panel</Link>
+      <div className="hidden md:block h-screen w-1/5 border-r">
+        <div className="flex flex-col text-black ">
+          <div className="flex justify-center items-center border-b h-20 text-2xl">
+            <div className="font-semibold cursor-pointer">
+              <Link to="/">Test</Link>
             </div>
           </div>
-          <div className="flex flex-col justify-between h-[79vh] px-8 ">
-            <div className="mt-5 ">
-              <div className="text-sm lg:text-lg ">
-                <Link to="/viewUser">
-                  <div className=" hover:bg-gray-700 text-white lg:font-base py-1 pl-1 rounded-md mb-2 flex items-center">
-                    <span className="mr-3 lg:text-xl">
-                      <EyeIcon />
-                    </span>
-                    <span>View Users</span>
-                  </div>
-                </Link>
-                <Link to="/uploadProduct">
-                  <div className=" hover:bg-gray-700 text-white lg:font-base py-1 pl-1 rounded-md mb-2 flex items-center">
-                    <span className="mr-3 lg:text-xl">
-                      <UploadIcon />
-                    </span>
-                    <span>Upload Products</span>
-                  </div>
-                </Link>
-                <Link to="/viewProduct">
-                  <div className=" hover:bg-gray-700 text-white lg:font-base py-1 pl-1 rounded-md mb-2 flex items-center">
-                    <span className="mr-3 lg:text-xl">
-                      <DatabaseIcon />
-                    </span>
-                    <span>View Products</span>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className="pl-1 pb-3">
-              <span className="text-3xl cursor-pointer" onClick={logOut}>
-                <LogOutIcon />
-              </span>
-            </div>
+
+          <div className="flex flex-col gap-2 px-2 mt-2">
+            <ul className="flex flex-col">
+              <li className="flex items-center gap-2 hover:bg-[#362bd2] hover:text-white py-2 px-4 rounded-md">
+                <span className="text-xl text-gray-400/75">
+                  <EyeIcon />
+                </span>
+                <span className="">Support</span>
+              </li>
+              <li className="flex items-center gap-2 hover:bg-[#362bd2] hover:text-white py-2 px-4 rounded-md">
+                <span className="text-xl text-gray-400/75">
+                  <EyeIcon />
+                </span>
+                <span className="">Inbox</span>
+              </li>
+              <li className="flex items-center gap-2 hover:bg-[#362bd2] hover:text-white py-2 px-4 rounded-md">
+                <span className="text-xl text-gray-400/75">
+                  <EyeIcon />
+                </span>
+                <span className="">File Manager</span>
+              </li>
+              <li className="flex items-center gap-2 hover:bg-[#362bd2] hover:text-white py-2 px-4 rounded-md">
+                <span className="text-xl text-gray-400/75">
+                  <EyeIcon />
+                </span>
+                <span className="">Data List</span>
+              </li>
+            </ul>
+            <ul className="flex flex-col lg:mt-4">
+              <li className="flex items-center gap-2 hover:bg-[#362bd2] hover:text-white py-2 px-4 rounded-md">
+                <span className="text-xl text-gray-400/75">
+                  <EyeIcon />
+                </span>
+                <span className="">Settings</span>
+              </li>
+              <li className="flex hover:bg-[#362bd2] hover:text-white py-2 px-4 rounded-md">
+                <button onClick={logOut} className="flex gap-2 items-center">
+                  <span className="text-xl text-gray-400/75">
+                    <LogOutIcon />
+                  </span>
+                  <span>Log Out</span>
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

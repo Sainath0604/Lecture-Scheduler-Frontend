@@ -34,7 +34,7 @@ function ForgotPassword() {
   }
 
   return (
-    <div className="dark:bg-[#D9CFFC]	bg-[#121212] min-h-screen">
+    <div className="dark:bg-white	bg-[#121212] min-h-screen">
       <Navbar />
       <div className="flex justify-center mt-10 h-screen p-5">
         <form onSubmit={resetPassword} className="w-full max-w-sm">

@@ -18,7 +18,6 @@ function SignUp() {
 
   function registerUser(e) {
     e.preventDefault();
-    console.log(fName, lName, email, password, userType);
     const payload = {
       fName,
       lName,
@@ -61,7 +60,7 @@ function SignUp() {
   }, [userType]);
 
   return (
-    <div className="dark:bg-[#D9CFFC]	bg-[#121212] min-h-screen">
+    <div className="dark:bg-white	bg-[#121212] min-h-screen">
       <Navbar />
       <div className="flex justify-center mt-10 h-80 p-5">
         <form onSubmit={registerUser} className="w-full max-w-sm">

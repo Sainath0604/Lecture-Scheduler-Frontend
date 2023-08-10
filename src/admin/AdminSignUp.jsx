@@ -23,7 +23,6 @@ function AdminSignUp() {
       alert("Invalid admin");
     } else {
       e.preventDefault();
-      console.log(fName, lName, email, password);
       fetch(registerUrl, {
         method: "POST",
         crossDomain: true,
@@ -65,7 +64,7 @@ function AdminSignUp() {
   }, [userType]);
 
   return (
-    <div className="dark:bg-[#D9CFFC]	bg-[#121212] min-h-screen">
+    <div className="dark:bg-white bg-[#121212] min-h-screen">
       <Navbar />
       <div className="flex justify-center mt-5 mb-5 h-80 p-5">
         <form onSubmit={registerUser} className="w-full max-w-sm">

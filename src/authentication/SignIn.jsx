@@ -21,7 +21,6 @@ function SignIn() {
 
   function loginUser(e) {
     e.preventDefault();
-    console.log(email, password);
     fetch(loginUrl, {
       method: "POST",
       crossDomain: true,
@@ -44,7 +43,6 @@ function SignIn() {
           window.localStorage.setItem("loggedIn", true);
           window.localStorage.setItem("userType", data.userType);
           navigate("/userDetails");
-          // window.location.href = "./userDetails";
         } else {
           alert("Invalid Credentials, please register if you haven't");
         }
@@ -52,7 +50,7 @@ function SignIn() {
   }
 
   return (
-    <div className="dark:bg-[#D9CFFC]	bg-[#121212] min-h-screen">
+    <div className="dark:bg-white bg-[#121212] min-h-screen">
       <Navbar />
       <div className="flex justify-center mt-10 h-80 p-5 ">
         <form onSubmit={loginUser} className="w-full max-w-sm">
