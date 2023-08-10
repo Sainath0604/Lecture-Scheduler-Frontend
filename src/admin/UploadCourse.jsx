@@ -123,14 +123,6 @@ function UploadCourse() {
     "5:00 PM - 6:00 PM",
   ];
 
-  function handleTest() {
-    console.log("Course Name:", courseName);
-    console.log("Description:", description);
-    console.log("Level:", cLevel);
-    console.log("Selected File:", selectedFile);
-    console.log("Lectures:", lecture);
-  }
-
   return (
     <div className="md:flex bg-white">
       <AdminNav />
@@ -271,18 +263,12 @@ function UploadCourse() {
               </div>
             </div>
           </div>
-          <div className="flex gap-2 items-center mt-5">
+          <div className="flex items-center mt-5">
             <button
               className="border bg-gray-400 rounded-xl font-bold text-gray-800 px-4 py-2 text-md lg:text-md  "
               onClick={handleUpload}
             >
               Upload
-            </button>
-            <button
-              className="border bg-gray-400 rounded-xl font-bold text-gray-800 px-4 py-2 text-md lg:text-md  "
-              onClick={handleTest}
-            >
-              test
             </button>
           </div>
         </div>
