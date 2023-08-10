@@ -66,7 +66,7 @@ function Navbar() {
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <Link to="/SignIn">
+                  <Link to="/signIn">
                     <button
                       type="button"
                       className="rounded-full dark:bg-gray-200 p-1 text-gray-400 dark:text-[#241B35] hover:text-white "
