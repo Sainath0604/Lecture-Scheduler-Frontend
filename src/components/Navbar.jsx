@@ -3,7 +3,7 @@ import { Disclosure } from "@headlessui/react";
 import Theme from "./Theme";
 import { CrossIcon, HamburgerIcon, UserIcon } from "../Icons/Icons";
 
-const navigation = [{ name: "Courses", to: "/" }];
+const navigation = [{ name: "Courses", to: "/courses" }];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

@@ -4,7 +4,7 @@ const ErrorPage = () => {
   return (
     <>
       <div className="h-screen w-screen bg-gradient-to-r from-indigo-500 p-10 md:p-40 ">
-        <div className=" border border-gray-500 rounded-lg bg-gray-200 p-10 md:p-20">
+        <div className=" border border-gray-500 rounded-lg bg-gray-200 text-black p-10 md:p-20">
           <div className="flex flex-col">
             <h1 className="font-bold text-base mb-5 md:mb-10 md:text-3xl">
               Oops! Something went wrong.

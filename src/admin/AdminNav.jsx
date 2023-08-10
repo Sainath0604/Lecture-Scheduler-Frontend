@@ -22,7 +22,7 @@ function AdminNav() {
   };
 
   const navigation = [
-    { name: "Courses", to: "/courses" },
+    { name: "Courses", to: "/course" },
     { name: "Add course", to: "/addCourse" },
     { name: "View users", to: "/viewUser" },
   ];
@@ -44,20 +44,24 @@ function AdminNav() {
           <div className="flex flex-col gap-2 px-2 mt-2">
             <ul className="flex flex-col">
               <li className="flex items-center gap-4 hover:bg-[#362bd2] hover:text-white py-2 px-4 rounded-md">
-                <button className="flex gap-4 items-center">
-                  <span className="text-xl text-gray-400/75">
-                    <CourseIcon />
-                  </span>
-                  <span className="">Courses</span>
-                </button>
+                <Link to="/course">
+                  <button className="flex gap-4 items-center">
+                    <span className="text-xl text-gray-400/75">
+                      <CourseIcon />
+                    </span>
+                    <span className="">Courses</span>
+                  </button>
+                </Link>
               </li>
               <li className="flex items-center gap-4 hover:bg-[#362bd2] hover:text-white py-2 px-4 rounded-md">
-                <button className="flex gap-4 items-center">
-                  <span className="text-xl text-gray-400/75">
-                    <AddIcon />
-                  </span>
-                  <span className="">Add course</span>
-                </button>
+                <Link to="/uploadCourse">
+                  <button className="flex gap-4 items-center">
+                    <span className="text-xl text-gray-400/75">
+                      <AddIcon />
+                    </span>
+                    <span className="">Add course</span>
+                  </button>
+                </Link>
               </li>
               <li className="flex hover:bg-[#362bd2] hover:text-white py-2 px-4 rounded-md">
                 <Link to="/viewUser">
@@ -70,7 +74,7 @@ function AdminNav() {
                 </Link>
               </li>
               <li className="flex hover:bg-[#362bd2] hover:text-white py-2 px-4 rounded-md">
-                <Link to="/viewUser">
+                <Link to="/instructors">
                   <button className="flex gap-4 items-center">
                     <span className="text-xl text-gray-400/75">
                       <InstructorIcon />
