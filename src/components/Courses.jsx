@@ -37,7 +37,7 @@ function Courses() {
               <h1>Loading data .......</h1>
             </div>
           ) : (
-            <div className="p-5 flex flex-col gap-2">
+            <div className="p-5 flex flex-col gap-2 items-center">
               {courseInfo.map((course) => (
                 <div
                   className="flex flex-col gap-2 border dark:border-black p-2 lg:w-1/2"
