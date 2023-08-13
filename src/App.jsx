@@ -48,6 +48,11 @@ function App() {
           ) : (
             <Route path="/adminPanel" element={<ErrorPage />} />
           )}
+          {/* {userType === "admin" ? (
+            <Route path="/viewUser" element={<ViewUser />} />
+          ) : (
+            <Route path="/viewUser" element={<ErrorPage />} />
+          )} */}
           <Route path="/viewUser" element={<ViewUser />} />
           <Route path="/instructors" element={<Instructors />} />
           <Route path="/uploadCourse" element={<UploadCourse />} />
