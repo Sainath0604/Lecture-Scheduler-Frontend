@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Home from "./components/Home";
+import AboutUs from "./components/AboutUs";
 import ErrorPage from "./components/ErrorPage";
 import Courses from "./components/Courses";
 import SignUp from "./authentication/SignUp";
@@ -29,6 +30,7 @@ function App() {
       <main className="flex-grow text-white dark:text-black bg-customDark1-500 dark:bg-gray-200">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/aboutUs" element={<AboutUs />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/courses" element={<Courses />} />
           {/* <Route
