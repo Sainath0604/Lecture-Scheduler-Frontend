@@ -100,14 +100,6 @@ function UploadCourse() {
     }
   };
 
-  function handleTest() {
-    console.log("Course Name:", courseName);
-    console.log("Description:", description);
-    console.log("Level:", cLevel);
-    console.log("Selected File:", selectedFile);
-    console.log("Lectures:", lecture);
-  }
-
   return (
     <div className="md:flex bg-white">
       <AdminNav />
@@ -254,12 +246,6 @@ function UploadCourse() {
               onClick={handleUpload}
             >
               Upload
-            </button>
-            <button
-              className="border bg-gray-400 rounded-xl font-bold text-gray-800 px-4 py-2 text-md lg:text-md  "
-              onClick={handleTest}
-            >
-              test
             </button>
           </div>
         </div>
