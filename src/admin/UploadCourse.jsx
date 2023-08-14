@@ -1,6 +1,8 @@
 import { useState } from "react";
 import AdminNav from "./AdminNav";
 import { getServerUrl } from "../utility/getServerUrl";
+import { Teachers } from "../utility/getInstructors";
+import { Timings } from "../utility/getTimings";
 import { UploadCloudIcon } from "../Icons/Icons";
 
 function UploadCourse() {
@@ -97,31 +99,6 @@ function UploadCourse() {
       alert("Failed to upload product.");
     }
   };
-
-  const Teachers = [
-    "John Smith",
-    "Alice Johnson",
-    "Michael Williams",
-    "Emily Brown",
-    "Daniel Jones",
-    "Olivia Davis",
-    "David Wilson",
-    "Sophia Taylor",
-    "Matthew Martinez",
-    "Ava Anderson",
-  ];
-
-  const Timings = [
-    "9:00 AM - 10:00 AM",
-    "10:00 AM - 11:00 AM",
-    "11:00 AM - 12:00 PM",
-    "12:00 PM - 1:00 PM",
-    "1:00 PM - 2:00 PM",
-    "2:00 PM - 3:00 PM",
-    "3:00 PM - 4:00 PM",
-    "4:00 PM - 5:00 PM",
-    "5:00 PM - 6:00 PM",
-  ];
 
   return (
     <div className="md:flex bg-white">
@@ -223,8 +200,8 @@ function UploadCourse() {
                         className="mr-2 p-2 border text-black"
                       >
                         <option value="">Select Professor</option>
-                        {Teachers.map((teacher) => (
-                          <option key={teacher} value={teacher}>
+                        {Teachers.map((teacher, index) => (
+                          <option key={index} value={teacher}>
                             {teacher}
                           </option>
                         ))}
