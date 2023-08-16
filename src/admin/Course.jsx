@@ -1,4 +1,5 @@
 // import PropTypes from "prop-types";
+import { DeleteIcon, EditIcon } from "../Icons/Icons";
 import { getServerUrl } from "../utility/getServerUrl";
 
 import AdminNav from "./AdminNav";
@@ -38,7 +39,7 @@ function Course() {
                 <h1>Loading data .......</h1>
               </div>
             ) : (
-              <div className="flex sm:w-full  justify-center">
+              <div className="flex sm:w-full justify-center">
                 <div className="mb-10">
                   <table className="border">
                     <caption className="caption-top my-12 text-3xl font-bold text-gray-900">
@@ -54,9 +55,10 @@ function Course() {
                           Assigned instructor
                         </th>
                         <th className="border p-2 w-[15vw]">Time</th>
+                        <th className="border p-2 w-[8vw]">Actions</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="text-base">
                       {/* mapping the fetched data */}
                       {courseInfo.map((course, index) => {
                         return (
@@ -80,27 +82,43 @@ function Course() {
                                 />
                               </div>
                             </td>
-                            <td className="border p-2 ">
+                            <td className="border p-2 text-xs text-left hyphens-auto">
                               {course.cDescription}
                             </td>
-                            <td className="border p-2 ">
+                            <td className="border p-2 text-red-900">
                               <div className="flex justify-center">
                                 {course.cLevel}
                               </div>
                             </td>
-                            <td className="border p-2 ">
+                            <td className="border p-2">
                               {course.lecture.map((lecture) => (
                                 <div key={lecture._id}>
-                                  <div>Professor: {lecture.lec_prof}</div>
+                                  <div className="flex gap-1 items-center justify-center">
+                                    <span className="text-sm">Professor:</span>
+                                    <span>{lecture.lec_prof}</span>
+                                  </div>
                                 </div>
                               ))}
                             </td>
                             <td className="border p-2 ">
                               {course.lecture.map((lecture) => (
                                 <div key={lecture._id}>
-                                  <div>Time: {lecture.lec_Time}</div>
+                                  <div className="flex gap-1 items-center justify-center">
+                                    <span className="text-sm">Time:</span>
+                                    <span>{lecture.lec_Time}</span>
+                                  </div>
                                 </div>
                               ))}
+                            </td>
+                            <td className="border p-2">
+                              <div className="flex gap-4 justify-center">
+                                <button className="text-red-700">
+                                  <DeleteIcon />
+                                </button>
+                                <button className="text-blue-700">
+                                  <EditIcon />
+                                </button>
+                              </div>
                             </td>
                           </tr>
                         );

@@ -1,18 +1,7 @@
 import AdminNav from "./AdminNav";
+import { Teachers } from "../utility/getInstructors";
 
 function Instructors() {
-  const Teachers = [
-    "John Smith",
-    "Alice Johnson",
-    "Michael Williams",
-    "Emily Brown",
-    "Daniel Jones",
-    "Olivia Davis",
-    "David Wilson",
-    "Sophia Taylor",
-    "Matthew Martinez",
-    "Ava Anderson",
-  ];
   return (
     <div className="min-h-screen bg-white">
       <div className="md:flex">
