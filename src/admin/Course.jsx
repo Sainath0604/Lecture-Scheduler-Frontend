@@ -9,6 +9,8 @@ function Course() {
   const [loading, setLoading] = useState(true);
   const serverUrl = getServerUrl();
   const viewCourseUrl = new URL("/getCourseInfo", serverUrl);
+  const deleteCourseUrl = new URL("/deleteCourseInfo", serverUrl);
+  // const editCourseUrl = new URL("/editCourseInfo", serverUrl);
 
   useEffect(() => {
     fetchCourseInfo();
@@ -25,6 +27,32 @@ function Course() {
     } catch (error) {
       console.log(error);
       setLoading(false);
+    }
+  };
+
+  const deleteCourseInfo = (id, name) => {
+    if (window.confirm(`Are you sure you want to delete ${name} info`)) {
+      fetch(deleteCourseUrl, {
+        method: "POST",
+        crossDomain: true,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+          courseId: id,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          alert(data.data);
+          fetchCourseInfo();
+        });
+
+      console.log(name, id);
+    } else {
+      alert("failed to delete course information");
     }
   };
 
@@ -112,7 +140,12 @@ function Course() {
                             </td>
                             <td className="border p-2">
                               <div className="flex gap-4 justify-center">
-                                <button className="text-red-700">
+                                <button
+                                  className="text-red-700"
+                                  onClick={() =>
+                                    deleteCourseInfo(course._id, course.cName)
+                                  }
+                                >
                                   <DeleteIcon />
                                 </button>
                                 <button className="text-blue-700">
