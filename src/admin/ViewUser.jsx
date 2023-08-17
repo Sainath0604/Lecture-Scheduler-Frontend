@@ -113,9 +113,15 @@ function ViewUser() {
                         index % 2 === 0 ? "bg-gray-100" : "bg-white"
                       } hover:bg-gray-200`}
                     >
-                      <td className="border border-gray-500 p-2">{i.fName}</td>
-                      <td className="border border-gray-500 p-2">{i.lName}</td>
-                      <td className="border border-gray-500 p-2">{i.email}</td>
+                      <td className="border border-gray-500 p-2 text-left">
+                        {i.fName}
+                      </td>
+                      <td className="border border-gray-500 p-2 text-left">
+                        {i.lName}
+                      </td>
+                      <td className="border border-gray-500 p-2 text-left">
+                        {i.email}
+                      </td>
                       <td className="border border-gray-500 p-2">
                         {i.userType}
                       </td>
