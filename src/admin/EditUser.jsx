@@ -16,59 +16,53 @@ const EditUser = ({ id, fName, lName, email, onEdit, onCancel }) => {
   };
 
   return (
-    <div className="bg-white border-2 border-sky-500 rounded-3xl p-4 h-[50vh]">
-      <h1 className="flex items-center justify-center border border-gray-300 bg-emerald-500 rounded-xl h-10 p-2 font-bold text-stone-800 text-xl">
+    <div className="border border-sky-500 rounded-2xl p-2 lg:p-6 flex flex-col gap-4">
+      <span className="flex items-center justify-center border border-gray-300 shadow-lg bg-emerald-500 rounded-xl p-2 font-bold text-stone-800 text-xl">
         Edit User
-      </h1>
+      </span>
 
-      <div>
-        <div className="md:mt-10 md:ml-10 md:mb-10 flex flex-col">
-          <div>
-            <label className="font-bold">
-              First name:
-              <input
-                className="ml-5 mb-4 border border-sky-400 rounded-lg p-1 font-normal"
-                type="text"
-                placeholder="First name"
-                value={newfName}
-                onChange={(e) => setNewfName(e.target.value)}
-              />
-            </label>
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-col lg:flex-row gap-1 lg:gap-2">
+            <label className="font-bold">First name:</label>
+            <input
+              className="border border-sky-400 rounded-lg p-1 font-normal"
+              type="text"
+              placeholder="First name"
+              value={newfName}
+              onChange={(e) => setNewfName(e.target.value)}
+            />
           </div>
-          <div>
-            <label className="font-bold">
-              Surname:
-              <input
-                className="ml-5 mb-4 border border-sky-400 rounded-lg p-1 font-normal"
-                type="text"
-                placeholder="Surname"
-                value={newlName}
-                onChange={(e) => setNewlName(e.target.value)}
-              />
-            </label>
+          <div className="flex flex-col lg:flex-row gap-1 lg:gap-2">
+            <label className="font-bold">Surname:</label>
+            <input
+              className="border border-sky-400 rounded-lg p-1 font-normal"
+              type="text"
+              placeholder="Surname"
+              value={newlName}
+              onChange={(e) => setNewlName(e.target.value)}
+            />
           </div>
-          <div>
-            <label className="font-bold">
-              Email:
-              <input
-                className="ml-5 mb-4 border border-sky-400 rounded-lg p-1 font-normal"
-                type="text"
-                placeholder="Email"
-                value={newEmail}
-                onChange={(e) => setNewEmail(e.target.value)}
-              />
-            </label>
+          <div className="flex flex-col lg:flex-row gap-1 lg:gap-2">
+            <label className="font-bold">Email:</label>
+            <input
+              className="border border-sky-400 rounded-lg p-1 font-normal"
+              type="text"
+              placeholder="Email"
+              value={newEmail}
+              onChange={(e) => setNewEmail(e.target.value)}
+            />
           </div>
         </div>
-        <div className="flex justify-center ">
+        <div className="flex flex-col md:flex-row justify-center gap-2 lg:gap-4">
           <button
-            className="border border-blue-700 bg-blue-500 rounded-lg px-2 py-1 mr-14 h-[6vh] w-[5vw] font-bold text-lg text-white "
+            className="border border-blue-700 bg-blue-500 rounded-lg px-4 py-1.5 font-bold text-lg text-white "
             onClick={handleEdit}
           >
             Save
           </button>
           <button
-            className="border border-red-700 bg-red-500 rounded-lg px-2 py-1  h-[6vh] w-[5vw] font-bold text-lg text-white "
+            className="border border-red-700 bg-red-500 rounded-lg px-4 py-1.5 font-bold text-lg text-white "
             onClick={handleCancel}
           >
             Cancel

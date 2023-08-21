@@ -126,16 +126,16 @@ function ViewUser() {
                         {i.userType}
                       </td>
                       <td className="border border-gray-500 p-2">
-                        <div className="flex justify-center flex-row">
+                        <div className="flex justify-center flex-row gap-4">
                           <div className="flex justify-center">
                             <span
-                              className="cursor-pointer text-gray-800 mr-5 hover:text-gray-500 text-xl"
+                              className="cursor-pointer text-gray-800 hover:text-gray-500 text-xl"
                               onClick={(e) => deleteUser(e, i._id, i.fName)}
                             >
                               <DeleteIcon />
                             </span>
                           </div>
-                          <div className="flex justify-center ">
+                          <div className="flex justify-center">
                             <Popup
                               trigger={
                                 <button className="button">
