@@ -1,16 +1,17 @@
-// import PropTypes from "prop-types";
 import { DeleteIcon, EditIcon } from "../Icons/Icons";
 import { getServerUrl } from "../utility/getServerUrl";
-
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 import AdminNav from "./AdminNav";
 import { useEffect, useState } from "react";
+import EditCourse from "./EditCourse";
 function Course() {
   const [courseInfo, setCourseInfo] = useState([]);
   const [loading, setLoading] = useState(true);
   const serverUrl = getServerUrl();
   const viewCourseUrl = new URL("/getCourseInfo", serverUrl);
   const deleteCourseUrl = new URL("/deleteCourseInfo", serverUrl);
-  // const editCourseUrl = new URL("/editCourseInfo", serverUrl);
+  const editCourseUrl = new URL("/editCourseInfo", serverUrl);
 
   useEffect(() => {
     fetchCourseInfo();
@@ -54,6 +55,25 @@ function Course() {
     } else {
       alert("failed to delete course information");
     }
+  };
+
+  const editCourseInfo = (formData) => {
+    fetch(editCourseUrl, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        alert(data.data);
+        fetchCourseInfo();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -148,9 +168,35 @@ function Course() {
                                 >
                                   <DeleteIcon />
                                 </button>
-                                <button className="text-blue-700">
-                                  <EditIcon />
-                                </button>
+                                <div>
+                                  <Popup
+                                    trigger={
+                                      <button className="text-blue-700">
+                                        <EditIcon />
+                                      </button>
+                                    }
+                                    modal
+                                    nested
+                                  >
+                                    {(close) => (
+                                      <div>
+                                        <EditCourse
+                                          id={course._id}
+                                          cName={course.cName}
+                                          cDescription={course.cDescription}
+                                          image={course.image.data}
+                                          cLevel={course.cLevel}
+                                          lec_Time={course.lecture[0].lec_Time}
+                                          lec_prof={course.lecture[0].lec_prof}
+                                          onEdit={(formData) =>
+                                            editCourseInfo(formData)
+                                          }
+                                          onCancel={close}
+                                        />
+                                      </div>
+                                    )}
+                                  </Popup>
+                                </div>
                               </div>
                             </td>
                           </tr>
