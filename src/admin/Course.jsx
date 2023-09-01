@@ -58,6 +58,10 @@ function Course() {
   const editCourseInfo = (formData) => {
     fetch(editCourseUrl, {
       method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
       body: formData,
     })
       .then((res) => res.json())

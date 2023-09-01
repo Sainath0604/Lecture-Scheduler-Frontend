@@ -24,11 +24,11 @@ const EditCourse = ({
     formData.append("cName", newCname);
     formData.append("cDescription", newDescription);
     formData.append("cLevel", newLevel);
-    formData.append("lec_Time", newLecTime); // Assuming you want to update lecture time
-    formData.append("lec_prof", newLecProf); // Assuming you want to update lecturer
+    formData.append("lec_Time", newLecTime);
+    formData.append("lec_prof", newLecProf);
 
     if (selectedFile) {
-      formData.append("image", selectedFile);
+      formData.append("course", selectedFile);
     }
 
     onEdit(formData);
