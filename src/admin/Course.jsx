@@ -5,6 +5,7 @@ import "reactjs-popup/dist/index.css";
 import AdminNav from "./AdminNav";
 import { useEffect, useState } from "react";
 import EditCourse from "./EditCourse";
+
 function Course() {
   const [courseInfo, setCourseInfo] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -23,7 +24,6 @@ function Course() {
       const response = await fetch(viewCourseUrl);
       const data = await response.json();
       setCourseInfo(data);
-      console.log(data);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -50,20 +50,14 @@ function Course() {
           alert(data.data);
           fetchCourseInfo();
         });
-
-      console.log(name, id);
     } else {
-      alert("failed to delete course information");
+      alert("Failed to delete course information");
     }
   };
 
   const editCourseInfo = (formData) => {
     fetch(editCourseUrl, {
       method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
       body: formData,
     })
       .then((res) => res.json())

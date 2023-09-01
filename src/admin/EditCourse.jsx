@@ -17,13 +17,6 @@ const EditCourse = ({
   const [newLecTime, setNewLecTime] = useState(lec_Time);
   const [newLecProf, setNewLecProf] = useState(lec_prof);
   const [selectedFile, setSelectedFile] = useState(null);
-  const [lecture, setLecture] = useState([
-    {
-      id: Date.now(),
-      lec_prof: { lec_prof },
-      lec_Time: { lec_Time },
-    },
-  ]);
 
   const handleEdit = () => {
     const formData = new FormData();
@@ -31,10 +24,12 @@ const EditCourse = ({
     formData.append("cName", newCname);
     formData.append("cDescription", newDescription);
     formData.append("cLevel", newLevel);
+    formData.append("lec_Time", newLecTime); // Assuming you want to update lecture time
+    formData.append("lec_prof", newLecProf); // Assuming you want to update lecturer
+
     if (selectedFile) {
-      formData.append("course", selectedFile);
+      formData.append("image", selectedFile);
     }
-    formData.append("lecture", JSON.stringify(lecture));
 
     onEdit(formData);
     onCancel();
@@ -108,8 +103,32 @@ const EditCourse = ({
               </select>
             </label>
           </div>
+          <div>
+            <label className="font-bold">
+              New course lecturer:
+              <input
+                className="ml-5 mb-4 border border-sky-400 rounded-lg p-1 font-normal"
+                type="text"
+                placeholder="Lecturer"
+                value={newLecProf}
+                onChange={(e) => setNewLecProf(e.target.value)}
+              />
+            </label>
+          </div>
+          <div>
+            <label className="font-bold">
+              New lecture time:
+              <input
+                className="ml-5 mb-4 border border-sky-400 rounded-lg p-1 font-normal"
+                type="text"
+                placeholder="Lecture Time"
+                value={newLecTime}
+                onChange={(e) => setNewLecTime(e.target.value)}
+              />
+            </label>
+          </div>
         </div>
-        <div className="flex justify-center ">
+        <div className="flex justify-center">
           <button
             className="border border-blue-700 bg-blue-500 rounded-lg px-2 py-1 mr-14 h-[6vh] w-[5vw] font-bold text-lg text-white "
             onClick={handleEdit}
