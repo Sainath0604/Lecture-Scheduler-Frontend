@@ -183,8 +183,6 @@ function Course() {
                                           cDescription={course.cDescription}
                                           image={course.image.data}
                                           cLevel={course.cLevel}
-                                          // lec_Time={course.lecture[0].lec_Time}
-                                          // lec_prof={course.lecture[0].lec_prof}
                                           lectures={course.lecture}
                                           onEdit={(formData) =>
                                             editCourseInfo(formData)
