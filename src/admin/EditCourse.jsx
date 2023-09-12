@@ -6,24 +6,18 @@ const EditCourse = ({
   cName,
   cDescription,
   cLevel,
-  lec_Time,
-  lec_prof,
+  // lec_Time,
+  // lec_prof,
+  lectures,
   onEdit,
   onCancel,
 }) => {
   const [newCname, setNewCname] = useState(cName);
   const [newDescription, setNewDescription] = useState(cDescription);
   const [newLevel, setNewLevel] = useState(cLevel);
-  const [newLecTime, setNewLecTime] = useState(lec_Time);
-  const [newLecProf, setNewLecProf] = useState(lec_prof);
+  // const [newLecTime, setNewLecTime] = useState(lec_Time);
+  // const [newLecProf, setNewLecProf] = useState(lec_prof);
   const [selectedFile, setSelectedFile] = useState(null);
-  const [lecture, setLecture] = useState([
-    {
-      id: Date.now(),
-      lec_prof: { lec_prof },
-      lec_Time: { lec_Time },
-    },
-  ]);
 
   const handleEdit = () => {
     const formData = new FormData();
@@ -31,10 +25,12 @@ const EditCourse = ({
     formData.append("cName", newCname);
     formData.append("cDescription", newDescription);
     formData.append("cLevel", newLevel);
+    // formData.append("lec_Time", newLecTime);
+    // formData.append("lec_prof", newLecProf);
+
     if (selectedFile) {
       formData.append("course", selectedFile);
     }
-    formData.append("lecture", JSON.stringify(lecture));
 
     onEdit(formData);
     onCancel();
@@ -45,7 +41,7 @@ const EditCourse = ({
   };
 
   return (
-    <div className="bg-white border-2 border-sky-500 rounded-3xl p-4 h-[65vh]">
+    <div className="bg-white border-2 border-sky-500 rounded-3xl p-4 ">
       <h1 className="flex items-center justify-center border border-gray-300 bg-emerald-500 rounded-xl h-10 p-2 font-bold text-stone-800 text-xl">
         Edit Course
       </h1>
@@ -108,8 +104,44 @@ const EditCourse = ({
               </select>
             </label>
           </div>
+          {/* <div>
+            <label className="font-bold">
+              New course lecturer:
+              <input
+                className="ml-5 mb-4 border border-sky-400 rounded-lg p-1 font-normal"
+                type="text"
+                placeholder="Lecturer"
+                value={newLecProf}
+                onChange={(e) => setNewLecProf(e.target.value)}
+              />
+            </label>
+          </div>
+          <div>
+            <label className="font-bold">
+              New lecture time:
+              <input
+                className="ml-5 mb-4 border border-sky-400 rounded-lg p-1 font-normal"
+                type="text"
+                placeholder="Lecture Time"
+                value={newLecTime}
+                onChange={(e) => setNewLecTime(e.target.value)}
+              />
+            </label>
+          </div> */}
+          {lectures.map((lecture) => (
+            <div key={lecture._id}>
+              <div className="flex gap-1 items-center justify-center">
+                <span className="text-sm">Professor:</span>
+                <span>{lecture.lec_prof}</span>
+              </div>
+              <div className="flex gap-1 items-center justify-center">
+                <span className="text-sm">Time:</span>
+                <span>{lecture.lec_Time}</span>
+              </div>
+            </div>
+          ))}
         </div>
-        <div className="flex justify-center ">
+        <div className="flex justify-center">
           <button
             className="border border-blue-700 bg-blue-500 rounded-lg px-2 py-1 mr-14 h-[6vh] w-[5vw] font-bold text-lg text-white "
             onClick={handleEdit}
@@ -133,8 +165,15 @@ EditCourse.propTypes = {
   cName: PropTypes.string,
   cDescription: PropTypes.string,
   cLevel: PropTypes.string,
-  lec_Time: PropTypes.string,
-  lec_prof: PropTypes.string,
+  _id: PropTypes.number,
+  // lec_Time: PropTypes.string,
+  // lec_prof: PropTypes.string,
+  lectures: PropTypes.array,
+  lecture: PropTypes.shape({
+    _id: PropTypes.number,
+    lec_Time: PropTypes.string,
+    lec_prof: PropTypes.string,
+  }),
   onEdit: PropTypes.func,
   onCancel: PropTypes.func,
 };

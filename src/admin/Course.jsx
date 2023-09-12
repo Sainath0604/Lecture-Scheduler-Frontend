@@ -5,6 +5,7 @@ import "reactjs-popup/dist/index.css";
 import AdminNav from "./AdminNav";
 import { useEffect, useState } from "react";
 import EditCourse from "./EditCourse";
+
 function Course() {
   const [courseInfo, setCourseInfo] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -23,7 +24,6 @@ function Course() {
       const response = await fetch(viewCourseUrl);
       const data = await response.json();
       setCourseInfo(data);
-      console.log(data);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -50,10 +50,8 @@ function Course() {
           alert(data.data);
           fetchCourseInfo();
         });
-
-      console.log(name, id);
     } else {
-      alert("failed to delete course information");
+      alert("Failed to delete course information");
     }
   };
 
@@ -107,7 +105,6 @@ function Course() {
                       </tr>
                     </thead>
                     <tbody className="text-base">
-                      {/* mapping the fetched data */}
                       {courseInfo.map((course, index) => {
                         return (
                           <tr
@@ -186,8 +183,9 @@ function Course() {
                                           cDescription={course.cDescription}
                                           image={course.image.data}
                                           cLevel={course.cLevel}
-                                          lec_Time={course.lecture[0].lec_Time}
-                                          lec_prof={course.lecture[0].lec_prof}
+                                          // lec_Time={course.lecture[0].lec_Time}
+                                          // lec_prof={course.lecture[0].lec_prof}
+                                          lectures={course.lecture}
                                           onEdit={(formData) =>
                                             editCourseInfo(formData)
                                           }

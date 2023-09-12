@@ -25,6 +25,8 @@ function AdminNav() {
     { name: "Courses", to: "/course" },
     { name: "Add course", to: "/addCourse" },
     { name: "View users", to: "/viewUser" },
+    { name: "Instructors", to: "/instructors" },
+    { name: "Settings", to: "/signIn" },
   ];
 
   function classNames(...classes) {
