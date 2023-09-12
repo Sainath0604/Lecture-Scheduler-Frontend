@@ -6,8 +6,6 @@ const EditCourse = ({
   cName,
   cDescription,
   cLevel,
-  // lec_Time,
-  // lec_prof,
   lectures,
   onEdit,
   onCancel,
@@ -15,9 +13,14 @@ const EditCourse = ({
   const [newCname, setNewCname] = useState(cName);
   const [newDescription, setNewDescription] = useState(cDescription);
   const [newLevel, setNewLevel] = useState(cLevel);
-  // const [newLecTime, setNewLecTime] = useState(lec_Time);
-  // const [newLecProf, setNewLecProf] = useState(lec_prof);
   const [selectedFile, setSelectedFile] = useState(null);
+
+  const [lectureInputs, setLectureInputs] = useState(
+    lectures.map((lecture) => ({
+      lecTime: lecture.lec_Time,
+      lecProf: lecture.lec_prof,
+    }))
+  );
 
   const handleEdit = () => {
     const formData = new FormData();
@@ -25,19 +28,36 @@ const EditCourse = ({
     formData.append("cName", newCname);
     formData.append("cDescription", newDescription);
     formData.append("cLevel", newLevel);
-    // formData.append("lec_Time", newLecTime);
-    // formData.append("lec_prof", newLecProf);
+
+    lectureInputs.forEach((input, index) => {
+      formData.append(`lec_Time_${index}`, input.lecTime);
+      // console.log(input.lecTime);
+      formData.append(`lec_prof_${index}`, input.lecProf);
+      // console.log(input.lecProf);
+    });
 
     if (selectedFile) {
       formData.append("course", selectedFile);
     }
 
+    // console.log(formData);
     onEdit(formData);
     onCancel();
   };
 
   const handleCancel = () => {
     onCancel();
+  };
+
+  const handleLectureInputChange = (index, type, value) => {
+    setLectureInputs((prevInputs) => {
+      const newInputs = [...prevInputs];
+      newInputs[index] = {
+        ...newInputs[index],
+        [type]: value,
+      };
+      return newInputs;
+    });
   };
 
   return (
@@ -104,52 +124,52 @@ const EditCourse = ({
               </select>
             </label>
           </div>
-          {/* <div>
-            <label className="font-bold">
-              New course lecturer:
-              <input
-                className="ml-5 mb-4 border border-sky-400 rounded-lg p-1 font-normal"
-                type="text"
-                placeholder="Lecturer"
-                value={newLecProf}
-                onChange={(e) => setNewLecProf(e.target.value)}
-              />
-            </label>
-          </div>
-          <div>
-            <label className="font-bold">
-              New lecture time:
-              <input
-                className="ml-5 mb-4 border border-sky-400 rounded-lg p-1 font-normal"
-                type="text"
-                placeholder="Lecture Time"
-                value={newLecTime}
-                onChange={(e) => setNewLecTime(e.target.value)}
-              />
-            </label>
-          </div> */}
-          {lectures.map((lecture) => (
-            <div key={lecture._id}>
-              <div className="flex gap-1 items-center justify-center">
-                <span className="text-sm">Professor:</span>
-                <span>{lecture.lec_prof}</span>
+          {lectures.map((lecture, index) => (
+            <div key={index}>
+              <h1>
+                <span className="mr-2">Lecture</span>
+                <span>{index + 1}</span>
+              </h1>
+              <div>
+                <label className="font-bold">
+                  New course lecturer:
+                  <input
+                    className="ml-5 mb-4 border border-sky-400 rounded-lg p-1 font-normal"
+                    type="text"
+                    placeholder="Lecturer"
+                    value={lectureInputs[index].lecProf}
+                    onChange={(e) =>
+                      handleLectureInputChange(index, "lecProf", e.target.value)
+                    }
+                  />
+                </label>
               </div>
-              <div className="flex gap-1 items-center justify-center">
-                <span className="text-sm">Time:</span>
-                <span>{lecture.lec_Time}</span>
+              <div>
+                <label className="font-bold">
+                  New lecture time:
+                  <input
+                    className="ml-5 mb-4 border border-sky-400 rounded-lg p-1 font-normal"
+                    type="text"
+                    placeholder="Lecture Time"
+                    value={lectureInputs[index].lecTime}
+                    onChange={(e) =>
+                      handleLectureInputChange(index, "lecTime", e.target.value)
+                    }
+                  />
+                </label>
               </div>
             </div>
           ))}
         </div>
         <div className="flex justify-center">
           <button
-            className="border border-blue-700 bg-blue-500 rounded-lg px-2 py-1 mr-14 h-[6vh] w-[5vw] font-bold text-lg text-white "
+            className="border border-blue-700 bg-blue-500 rounded-lg px-2 py-1 mr-14 font-bold text-lg text-white "
             onClick={handleEdit}
           >
             Save
           </button>
           <button
-            className="border border-red-700 bg-red-500 rounded-lg px-2 py-1  h-[6vh] w-[5vw] font-bold text-lg text-white "
+            className="border border-red-700 bg-red-500 rounded-lg px-2 py-1 font-bold text-lg text-white "
             onClick={handleCancel}
           >
             Cancel
@@ -166,8 +186,6 @@ EditCourse.propTypes = {
   cDescription: PropTypes.string,
   cLevel: PropTypes.string,
   _id: PropTypes.number,
-  // lec_Time: PropTypes.string,
-  // lec_prof: PropTypes.string,
   lectures: PropTypes.array,
   lecture: PropTypes.shape({
     _id: PropTypes.number,
