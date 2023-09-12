@@ -105,7 +105,6 @@ function Course() {
                       </tr>
                     </thead>
                     <tbody className="text-base">
-                      {/* mapping the fetched data */}
                       {courseInfo.map((course, index) => {
                         return (
                           <tr
@@ -184,8 +183,9 @@ function Course() {
                                           cDescription={course.cDescription}
                                           image={course.image.data}
                                           cLevel={course.cLevel}
-                                          lec_Time={course.lecture[0].lec_Time}
-                                          lec_prof={course.lecture[0].lec_prof}
+                                          // lec_Time={course.lecture[0].lec_Time}
+                                          // lec_prof={course.lecture[0].lec_prof}
+                                          lectures={course.lecture}
                                           onEdit={(formData) =>
                                             editCourseInfo(formData)
                                           }

@@ -6,16 +6,17 @@ const EditCourse = ({
   cName,
   cDescription,
   cLevel,
-  lec_Time,
-  lec_prof,
+  // lec_Time,
+  // lec_prof,
+  lectures,
   onEdit,
   onCancel,
 }) => {
   const [newCname, setNewCname] = useState(cName);
   const [newDescription, setNewDescription] = useState(cDescription);
   const [newLevel, setNewLevel] = useState(cLevel);
-  const [newLecTime, setNewLecTime] = useState(lec_Time);
-  const [newLecProf, setNewLecProf] = useState(lec_prof);
+  // const [newLecTime, setNewLecTime] = useState(lec_Time);
+  // const [newLecProf, setNewLecProf] = useState(lec_prof);
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleEdit = () => {
@@ -24,8 +25,8 @@ const EditCourse = ({
     formData.append("cName", newCname);
     formData.append("cDescription", newDescription);
     formData.append("cLevel", newLevel);
-    formData.append("lec_Time", newLecTime);
-    formData.append("lec_prof", newLecProf);
+    // formData.append("lec_Time", newLecTime);
+    // formData.append("lec_prof", newLecProf);
 
     if (selectedFile) {
       formData.append("course", selectedFile);
@@ -40,7 +41,7 @@ const EditCourse = ({
   };
 
   return (
-    <div className="bg-white border-2 border-sky-500 rounded-3xl p-4 h-[65vh]">
+    <div className="bg-white border-2 border-sky-500 rounded-3xl p-4 ">
       <h1 className="flex items-center justify-center border border-gray-300 bg-emerald-500 rounded-xl h-10 p-2 font-bold text-stone-800 text-xl">
         Edit Course
       </h1>
@@ -103,7 +104,7 @@ const EditCourse = ({
               </select>
             </label>
           </div>
-          <div>
+          {/* <div>
             <label className="font-bold">
               New course lecturer:
               <input
@@ -126,7 +127,19 @@ const EditCourse = ({
                 onChange={(e) => setNewLecTime(e.target.value)}
               />
             </label>
-          </div>
+          </div> */}
+          {lectures.map((lecture) => (
+            <div key={lecture._id}>
+              <div className="flex gap-1 items-center justify-center">
+                <span className="text-sm">Professor:</span>
+                <span>{lecture.lec_prof}</span>
+              </div>
+              <div className="flex gap-1 items-center justify-center">
+                <span className="text-sm">Time:</span>
+                <span>{lecture.lec_Time}</span>
+              </div>
+            </div>
+          ))}
         </div>
         <div className="flex justify-center">
           <button
@@ -152,8 +165,15 @@ EditCourse.propTypes = {
   cName: PropTypes.string,
   cDescription: PropTypes.string,
   cLevel: PropTypes.string,
-  lec_Time: PropTypes.string,
-  lec_prof: PropTypes.string,
+  _id: PropTypes.number,
+  // lec_Time: PropTypes.string,
+  // lec_prof: PropTypes.string,
+  lectures: PropTypes.array,
+  lecture: PropTypes.shape({
+    _id: PropTypes.number,
+    lec_Time: PropTypes.string,
+    lec_prof: PropTypes.string,
+  }),
   onEdit: PropTypes.func,
   onCancel: PropTypes.func,
 };
